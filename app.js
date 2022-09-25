@@ -39,7 +39,7 @@ const person = new Person({
 
 //person.save();
 
-fruit.save();
+//fruit.save();
 
 /* const kiwi = new Fruit({
   name: "Kiwi",
@@ -74,5 +74,33 @@ Fruit.find(function (err, fruits) {
     fruits.forEach((fruit) => {
       console.log(fruit.name);
     });
+  }
+});
+
+Fruit.updateOne(
+  { _id: "6330a707d81c3efa8fdf9c41" },
+  { name: "Fig", score: 6, review: "Ok, but is better in Newton form." },
+  function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Successfully updated");
+    }
+  }
+);
+
+Fruit.deleteOne({ name: "Plum" }, function (err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Success");
+  }
+});
+
+Person.deleteMany({ name: "John" }, function (err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Successfully all of the records");
   }
 });
