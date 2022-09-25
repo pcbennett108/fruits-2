@@ -28,14 +28,24 @@ const fruit = new Fruit({
 const personSchema = new mongoose.Schema({
   name: String,
   age: Number,
+  favoriteFruit: fruitSchema,
 });
 
 const Person = mongoose.model("Person", personSchema);
 
-const person = new Person({
-  name: "John",
-  age: 37,
+const mango = new Fruit({
+  name: "Mango",
+  score: 6,
+  review: "Great flavour, seed kinda big.",
 });
+
+//mango.save();
+
+/* const person = new Person({
+  name: "Amy",
+  age: 42,
+  favoriteFruit: pineapple,
+}); */
 
 //person.save();
 
@@ -77,9 +87,9 @@ Fruit.find(function (err, fruits) {
   }
 });
 
-Fruit.updateOne(
-  { _id: "6330a707d81c3efa8fdf9c41" },
-  { name: "Fig", score: 6, review: "Ok, but is better in Newton form." },
+Person.updateOne(
+  { _id: "63309729ed6daccc4e358ae6" },
+  { favoriteFruit: mango },
   function (err) {
     if (err) {
       console.log(err);
@@ -89,18 +99,18 @@ Fruit.updateOne(
   }
 );
 
-Fruit.deleteOne({ name: "Plum" }, function (err) {
+/* Fruit.deleteOne({ _id: "6330b4903cb719b52e02d55a" }, function (err) {
   if (err) {
     console.log(err);
   } else {
     console.log("Success");
   }
-});
+}); */
 
-Person.deleteMany({ name: "John" }, function (err) {
+/* Person.deleteMany({ name: "John" }, function (err) {
   if (err) {
     console.log(err);
   } else {
     console.log("Successfully all of the records");
   }
-});
+}); */
